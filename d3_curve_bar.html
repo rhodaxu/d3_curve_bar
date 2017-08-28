@@ -18,8 +18,9 @@
         outerRadius = Math.min(width, height) * 0.9 / 2,
         g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-    //角度
+    //角度 
     var x = d3.scaleBand()
+    //0.8表示一个弧度，2 则是满圆
         .range([0, 0.8 * Math.PI])
         .align(0);
     //半径
@@ -39,7 +40,6 @@
         x.domain(data.map(function (d) { return d.State; }));
         y.domain([0, d3.max(data, function (d) { return d.total; })]);
         z.domain(data.columns.slice(1));
-        console.log(data);
 
         g.append("g")
             .selectAll("g")
@@ -60,7 +60,7 @@
                 .endAngle(function (d) { return x(d.data.State) + x.bandwidth(); })
                 .padAngle(0.03)
                 .padRadius(innerRadius + 10));
-
+        //弧形折线
         var radialLineGenerator = d3.radialLine();
 
         radialLineGenerator
@@ -78,7 +78,8 @@
             .attr("class", "line")
             .append("path")
             .attr("d", pathData)
-
+        
+        //弧形折线面积图
         // var radialAreaGenerator = d3.radialArea()
         //     .angle(function (d, i) {
         //         return x.bandwidth() * i + 0.08;
