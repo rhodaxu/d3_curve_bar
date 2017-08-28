@@ -1,2 +1,2 @@
 # d3_curve_bar
-![image](https://github.com/rhodexu/d3_curve_bar/demo/demo.png)
+![image](https://github.com/rhodaxu/d3_curve_bar/blob/master/demo/demo.png)
